@@ -36,6 +36,7 @@ if (pathname.startsWith('/products/')) {
                     `
 
                     parentElement1.appendChild(product)
+                    console.log("after append")
 
 
 
