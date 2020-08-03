@@ -16,15 +16,15 @@ if (pathname.startsWith('/products/')) {
 
     fetch("http://localhost:4000/token/plano-01.myshopify.com")
         .then(response => response.json())
-        .then(token => {
-            console.log("text 2: ", token)
+        .then(rs => {
+            console.log("token: ", rs)
 
-            fetch("https://cors-anywhere.herokuapp.com/https://plano-01.myshopify.com/admin/api/2020-07/cart/add.json", {
+            fetch("https://cors-anywhere.herokuapp.com/https://plano-01.myshopify.com/admin/api/2020-07/cart/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "X-Shopify-Access-Token": token
+                    "X-Shopify-Access-Token": rs.token
                 },
                 body: JSON.stringify({
                     id: '35276846268567',
@@ -37,8 +37,6 @@ if (pathname.startsWith('/products/')) {
 
                     return text;
                 });
-
-            return text;
         });
 
 
