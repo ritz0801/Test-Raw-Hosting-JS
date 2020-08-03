@@ -24,7 +24,22 @@ if (pathname.startsWith('/products/')) {
                 .then(rs => {
                     console.log("rs*: ", rs)
                     console.log(rs.mappingProductId)
-                    
+                    const { product: { image, title, handle}} =  rs.mappingProductId
+                    const product = document.createElement("div");   // Create a <button> element
+                    product.innerHTML = `
+                            <div>
+                                 <a href="/products/${handle}">
+                                    <span>${title}</span>
+                                </a>
+                                <img style ="width: 100px; height: 100px;" src="${image.src}" alt="${title}">
+                            <div>
+                    `
+
+                    parentElement1.appendChild(product)
+                    console.log("after append")
+
+
+
                     fetch("https://cors-anywhere.herokuapp.com/https://plano-01.myshopify.com/admin/api/2020-07/cart/add", {
                         method: "POST",
                         headers: {
