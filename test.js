@@ -14,12 +14,12 @@ if (pathname.startsWith('/products/')) {
     parentElement1.appendChild(handleEle)
 
 
-    fetch("http://localhost:4000/token/plano-01.myshopify.com")
+    fetch("https://cors-anywhere.herokuapp.com/http://localhost:4000/token/plano-01.myshopify.com")
         .then(response => response.json())
         .then(token => {
             console.log("text 2: ", token)
 
-            fetch("https://plano-01.myshopify.com/admin/api/2020-07/cart/add.json", {
+            fetch("https://cors-anywhere.herokuapp.com/https://plano-01.myshopify.com/admin/api/2020-07/cart/add.json", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
