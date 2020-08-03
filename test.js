@@ -20,11 +20,11 @@ if (pathname.startsWith('/products/')) {
     //     .then(commits => alert(commits[0].author.login));
     // console.log("result get mapping: ", rs)
 
-    fetch(url)
+    fetch("https://b065493151d2.ngrok.io/api/mapping")
         .then(response => response.json())
         .then(text => {
             console.log("text: ", text)
-            
+
             return text;
         });
 }
