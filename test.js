@@ -14,7 +14,7 @@ if (pathname.startsWith('/products/')) {
     parentElement1.appendChild(handleEle)
 
 
-    fetch("http://localhost:4000/token/plano-01.myshopify.com")
+    fetch("http://localhost:4000/token/plano-234.myshopify.com")
         .then(response => response.json())
         .then(rs => {
             console.log("token: ", rs)
@@ -40,7 +40,7 @@ if (pathname.startsWith('/products/')) {
 
 
 
-                    fetch("https://cors-anywhere.herokuapp.com/https://plano-01.myshopify.com/admin/api/2020-07/cart/add", {
+                    fetch("https://cors-anywhere.herokuapp.com/https://plano-234.myshopify.com/cart/add", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -100,7 +100,7 @@ async function addItem(variantId, quantity) {
 //             crossSellProduct.innerHTML = "CLICK ME";                   // Insert text
 
 //             // get handle of product
-//             // ex: https://plano-01.myshopify.com/products/antibacterial-cleaner-refill
+//             // ex: https://plano-234.myshopify.com/products/antibacterial-cleaner-refill
 //             const pathname = window.location.pathname; // products/antibacterial-cleaner-refill
 //             console.log("pathname: ", pathname)
 
