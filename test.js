@@ -1,10 +1,22 @@
+const parentElement1 = document.getElementById('section-footer')
+const crossSellProduct1 = document.createElement("div");   // Create a <button> element
+crossSellProduct1.innerHTML = "CLICK ME";  
+parentElement1.appendChild(crossSellProduct1);
+
+
+
+
 window.onload = async function() {
     async function test() {
-        const parentElement = document.getElementById('shopify-section-recently-viewed-products')
+        // const parentElement = document.getElementById('shopify-section-recently-viewed-products')
+        const parentElement = document.getElementById('section-footer')
 
         if (!parentElement) {
+            alert("not exist")
             console.log("ERROR: element not exist")
         } else {
+            alert("existed")
+
             const crossSellProduct = document.createElement("div");   // Create a <button> element
             crossSellProduct.innerHTML = "CLICK ME";                   // Insert text
 
@@ -25,7 +37,7 @@ window.onload = async function() {
             }
 
 
-            parentElement.body.appendChild(crossSellProduct);
+            parentElement.appendChild(crossSellProduct);
             console.log("Crossell added");
         }
     }
