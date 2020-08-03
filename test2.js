@@ -19,12 +19,12 @@ if (pathname.startsWith('/products/')) {
         .then(rs => {
             console.log("token: ", rs)
             // get mapping
-            fetch("http://localhost:4000/mapping/5447451246743")
-                .then(rp => rp.json())
-                .then(rs => {
-                    console.log("rs*: ", rs)
-                    console.log(rs.mappingProductId)
-                })
+            // fetch("http://localhost:4000/mapping/5447451246743")
+            //     .then(rp => rp.json())
+            //     .then(rs => {
+            //         console.log("rs*: ", rs)
+            //         console.log(rs.mappingProductId)
+            //     })
 
             fetch("https://cors-anywhere.herokuapp.com/https://plano-01.myshopify.com/admin/api/2020-07/cart/add", {
                 method: "POST",
