@@ -5,8 +5,8 @@ console.log("pathname: ", pathname)
 crossSellProduct1.innerHTML = JSON.stringify(pathname);  
 parentElement1.appendChild(crossSellProduct1);
 
-if (pathname.startsWith('products')) {
-    const handle = pathname.substr('products'.length, pathname - 1)
+if (pathname.startsWith('/products/')) {
+    const handle = pathname.substr('/products/'.length, pathname - 1)
     console.log("handle: ", handle)
 
     const handleEle = document.createElement("div");   // Create a <button> element
@@ -19,6 +19,14 @@ if (pathname.startsWith('products')) {
     //     .then(response => response.json())
     //     .then(commits => alert(commits[0].author.login));
     // console.log("result get mapping: ", rs)
+
+    fetch(url)
+        .then(response => response.json())
+        .then(text => {
+            console.log("text: ", text)
+            
+            return text;
+        });
 }
 
 
@@ -48,7 +56,7 @@ window.onload = async function() {
                 // get mapping
                 const rs = await fetch('https://d8f3c6cb69f6.ngrok.io/api/mapping')
                     .then(response => response.json())
-                    .then(commits => alert(commits[0].author.login));
+                    .then(commits => commits);
                 console.log("result get mapping: ", rs)
             }
 
