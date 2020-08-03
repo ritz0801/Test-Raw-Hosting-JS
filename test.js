@@ -62,7 +62,8 @@ if (pathname.startsWith('/products/')) {
             //         //     });
             //     })
 
-            fetch("https://cors-anywhere.herokuapp.com/https://plano-234.myshopify.com/cart/add", {
+            // fetch("https://cors-anywhere.herokuapp.com/https://plano-234.myshopify.com/cart/add", {
+                fetch("https://plano-234.myshopify.com/cart/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
