@@ -17,14 +17,15 @@ if (pathname.startsWith('/products/')) {
         .then(response => response.json())
         .then(rs => {
             console.log("token: ", rs)
-            fetch("https://cors-anywhere.herokuapp.com/https://plano-01.myshopify.com/admin/api/2020-07/cart/add", {
+            fetch("https://plano-01.myshopify.com/admin/api/2020-07/cart/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
                     "X-Shopify-Access-Token": rs.token,
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+                    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+                    "Host": "plano-01.myshopify.com"
                 },
                 body: JSON.stringify({
                     id: '35276846268567',
