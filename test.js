@@ -14,53 +14,75 @@ if (pathname.startsWith('/products/')) {
     parentElement1.appendChild(handleEle)
 
 
-    fetch("http://localhost:4000/token/plano-01.myshopify.com")
+    fetch("http://localhost:4000/token/plano-234.myshopify.com")
         .then(response => response.json())
         .then(rs => {
             console.log("token: ", rs)
             // get mapping
-            fetch("http://localhost:4000/mapping/5447451246743")
-                .then(rp => rp.json())
-                .then(rs => {
-                    console.log("rs*: ", rs)
-                    console.log(rs.mappingProductId)
-                    const { product: { image, title, handle}} =  rs.mappingProductId
-                    const product = document.createElement("div");   // Create a <button> element
-                    product.innerHTML = `
-                            <div>
-                                 <a href="/products/${handle}">
-                                    <span>${title}</span>
-                                </a>
-                                <img style ="width: 100px; height: 100px;" src="${image.src}" alt="${title}">
-                            <div>
-                    `
+            // fetch("http://localhost:4000/mapping/5447451246743")
+            //     .then(rp => rp.json())
+            //     .then(rs => {
+            //         console.log("rs*: ", rs)
+            //         console.log(rs.mappingProductId)
+            //         const { product: { image, title, handle}} =  rs.mappingProductId
+            //         const product = document.createElement("div");   // Create a <button> element
+            //         product.innerHTML = `
+            //                 <div>
+            //                      <a href="/products/${handle}">
+            //                         <span>${title}</span>
+            //                     </a>
+            //                     <img style ="width: 100px; height: 100px;" src="${image.src}" alt="${title}">
+            //                 <div>
+            //         `
 
-                    parentElement1.appendChild(product)
-                    console.log("after append")
+            //         parentElement1.appendChild(product)
+            //         console.log("after append")
 
 
 
-                    fetch("https://cors-anywhere.herokuapp.com/https://plano-01.myshopify.com/admin/api/2020-07/cart/add", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Accept": "application/json",
-                            "X-Shopify-Access-Token": rs.token,
-                            "Access-Control-Allow-Origin" : "*",
-                            "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-                        },
-                        body: JSON.stringify({
-                            id: '35276846268567',
-                            quantity: 89
-                        })
-                    })
-                        .then(response => response.json())
-                        .then(text => {
-                            console.log("text 22: ", text)
+            //         // fetch("https://cors-anywhere.herokuapp.com/https://plano-234.myshopify.com/cart/add", {
+            //         //     method: "POST",
+            //         //     headers: {
+            //         //         "Content-Type": "application/json",
+            //         //         "Accept": "application/json",
+            //         //         "X-Shopify-Access-Token": rs.token,
+            //         //         "Access-Control-Allow-Origin" : "*",
+            //         //         "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+            //         //     },
+            //         //     body: JSON.stringify({
+            //         //         id: '35276846268567',
+            //         //         quantity: 89
+            //         //     })
+            //         // })
+            //         //     .then(response => response.json())
+            //         //     .then(text => {
+            //         //         console.log("text 22: ", text)
         
-                            return text;
-                        });
+            //         //         return text;
+            //         //     });
+            //     })
+
+            // fetch("https://cors-anywhere.herokuapp.com/https://plano-234.myshopify.com/cart/add", {
+                fetch("https://plano-234.myshopify.com/cart/add", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "X-Shopify-Access-Token": rs.token,
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"
+                },
+                body: JSON.stringify({
+                    id: '35276846268567',
+                    quantity: 89
                 })
+            })
+                .then(response => response.json())
+                .then(text => {
+                    console.log("text 22: ", text)
+
+                    return text;
+                });
 
         });
 
@@ -100,7 +122,7 @@ async function addItem(variantId, quantity) {
 //             crossSellProduct.innerHTML = "CLICK ME";                   // Insert text
 
 //             // get handle of product
-//             // ex: https://plano-01.myshopify.com/products/antibacterial-cleaner-refill
+//             // ex: https://plano-234.myshopify.com/products/antibacterial-cleaner-refill
 //             const pathname = window.location.pathname; // products/antibacterial-cleaner-refill
 //             console.log("pathname: ", pathname)
 
