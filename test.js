@@ -14,7 +14,7 @@ if (pathname.startsWith('/products/')) {
     parentElement1.appendChild(handleEle)
 
 
-    fetch("https://cors-anywhere.herokuapp.com/http://localhost:4000/token/plano-01.myshopify.com")
+    fetch("http://localhost:4000/token/plano-01.myshopify.com")
         .then(response => response.json())
         .then(token => {
             console.log("text 2: ", token)
