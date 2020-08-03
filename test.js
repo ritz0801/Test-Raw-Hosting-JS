@@ -13,28 +13,33 @@ if (pathname.startsWith('/products/')) {
     handleEle.innerHTML = handle
     parentElement1.appendChild(handleEle)
 
-    fetch("https://plano-01.myshopify.com/admin/api/2020-07/cart/add.json", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "X-Shopify-Access-Token": "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"
-        },
-        body: JSON.stringify({
-            id: '35276846268567',
-            quantity: 89
-        })
-    }).then (response => {
-        // get mapping
-        fetch("https://cors-anywhere.herokuapp.com/https://b065493151d2.ngrok.io/api/mapping")
-            .then(response => response.json())
-            .then(text => {
-                console.log("text: ", text)
-    
-                return text;
-            });
 
-    })
+    fetch("http://localhost:4000/token/plano-01.myshopify.com")
+        .then(response => response.json())
+        .then(token => {
+            console.log("text 2: ", token)
+
+            fetch("https://plano-01.myshopify.com/admin/api/2020-07/cart/add.json", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    "X-Shopify-Access-Token": token
+                },
+                body: JSON.stringify({
+                    id: '35276846268567',
+                    quantity: 89
+                })
+            })
+                .then(response => response.json())
+                .then(text => {
+                    console.log("text 22: ", text)
+
+                    return text;
+                });
+
+            return text;
+        });
 
 
 }
