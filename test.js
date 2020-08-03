@@ -18,6 +18,13 @@ if (pathname.startsWith('/products/')) {
         .then(response => response.json())
         .then(rs => {
             console.log("token: ", rs)
+            // get mapping
+            fetch("http://localhost:4000/mapping/5447451246743")
+                .then(rp => rp.json())
+                .then(rs => {
+                    console.log("rs*: ", rs)
+                    console.log(rs.mappingProductId)
+                })
 
             fetch("https://cors-anywhere.herokuapp.com/https://plano-01.myshopify.com/admin/api/2020-07/cart/add", {
                 method: "POST",
@@ -25,7 +32,8 @@ if (pathname.startsWith('/products/')) {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
                     "X-Shopify-Access-Token": rs.token,
-                    "Access-Control-Allow-Origin" : "*"
+                    "Access-Control-Allow-Origin" : "*",
+                    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS"
                 },
                 body: JSON.stringify({
                     id: '35276846268567',
