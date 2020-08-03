@@ -24,7 +24,8 @@ if (pathname.startsWith('/products/')) {
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "application/json",
-                    "X-Shopify-Access-Token": rs.token
+                    "X-Shopify-Access-Token": rs.token,
+                    "Access-Control-Allow-Origin" : "*"
                 },
                 body: JSON.stringify({
                     id: '35276846268567',
