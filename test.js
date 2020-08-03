@@ -1,9 +1,25 @@
 const parentElement1 = document.getElementById('section-footer')
 const crossSellProduct1 = document.createElement("div");   // Create a <button> element
-crossSellProduct1.innerHTML = "CLICK ME";  
+const pathname = window.location.pathname; // products/antibacterial-cleaner-refill
+console.log("pathname: ", pathname)
+crossSellProduct1.innerHTML = JSON.stringify(pathname);  
 parentElement1.appendChild(crossSellProduct1);
 
+if (pathname.startsWith('products')) {
+    const handle = pathname.substr('products'.length, pathname - 1)
+    console.log("handle: ", handle)
 
+    const handleEle = document.createElement("div");   // Create a <button> element
+    handleEle.innerHTML = handle
+    parentElement1.appendChild(handleEle)
+
+
+    // get mapping
+    // const rs = await fetch('https://d8f3c6cb69f6.ngrok.io/api/mapping')
+    //     .then(response => response.json())
+    //     .then(commits => alert(commits[0].author.login));
+    // console.log("result get mapping: ", rs)
+}
 
 
 window.onload = async function() {
