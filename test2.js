@@ -13,32 +13,23 @@ if (pathname.startsWith('/products/')) {
     handleEle.innerHTML = handle
     parentElement1.appendChild(handleEle)
 
-    fetch("http://localhost:4000/token/plano-01.myshopify.com")
-        .then(response => response.json())
-        .then(rs => {
-            console.log("token: ", rs)
-            fetch("https://plano-01.myshopify.com/admin/api/2020-07/cart/add", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    "X-Shopify-Access-Token": rs.token,
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-                    "Host": "plano-01.myshopify.com"
-                },
-                body: JSON.stringify({
-                    id: '35276846268567',
+
+    fetch("https://plano-01.myshopify.com/cart/add.js", {
+        method: "POST",
+        body: JSON.stringify({   
+            items: [
+                {
+                    id: 5447451246743,
                     quantity: 89
-                })
-            })
-                .then(response => response.json())
-                .then(text => {
-                    console.log("text 22: ", text)
+                }
+            ]
+        })
+    })
+        .then(response => response.json())
+        .then(text => {
+            console.log("text 22: ", text)
 
-                    return text;
-                });
-
+            return text;
         });
 
 
